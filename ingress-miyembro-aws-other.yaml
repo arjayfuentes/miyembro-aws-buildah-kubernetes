@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: miyembro-ingress-other
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: ac4a6c0be793a41d69f3ad16a5c66373-1981993319.eu-north-1.elb.amazonaws.com
+      http:
+        paths:
+          - path: /eureka
+            pathType: Prefix
+            backend:
+              service:
+                name: discovery-service
+                port:
+                  number: 8761
