@@ -51,22 +51,23 @@ spec:
             limits:
               memory: "2Gi"
               cpu: "2"
-#          resources: #initial values resources
-#            requests:
-#              memory: "512Mi"
-#              cpu: "500m"
-#            limits:
-#              memory: "1Gi"
-#              cpu: "1"
-#      affinity:
-#        nodeAffinity:
-#          requiredDuringSchedulingIgnoredDuringExecution:
-#            nodeSelectorTerms:
-#              - matchExpressions:
-#                  - key: topology.kubernetes.io/zone
-#                    operator: In
-#                    values:
-#                      - eu-north-1a  # Ensure this matches your availability zone
+      #          resources: #initial values resources
+      #            requests:
+      #              memory: "512Mi"
+      #              cpu: "500m"
+      #            limits:
+      #              memory: "1Gi"
+      #              cpu: "1"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                      - eu-north-1a
+      # Ensure this matches your availability zone
       volumes:
         - name: jenkins-home
           persistentVolumeClaim:
